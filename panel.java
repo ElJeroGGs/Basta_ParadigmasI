@@ -15,7 +15,7 @@ public class panel extends JFrame {
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
 	
 	public panel() {
-		super("Basta!");
+		super("Basta 1!");
 		
 		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
 		JPanel panelPrincipal, panelTotal ,panelPalabras, panelEnviar;
