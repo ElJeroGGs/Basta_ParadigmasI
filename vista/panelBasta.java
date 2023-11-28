@@ -1,4 +1,4 @@
-package finalParadickmas.uwu;
+package vista;
 
 import java.awt.GridLayout;
 
@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class panel extends JFrame {
+public class panelBasta extends JFrame {
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
 	
-	public panel() {
+	public panelBasta() {
 		super("Basta!");
 		
 		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
@@ -112,3 +112,4 @@ public class panel extends JFrame {
 	}
 	
 }
+
