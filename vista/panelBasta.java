@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import modelo.ronda;
+
 public class panelBasta extends JFrame implements ActionListener{
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
@@ -117,7 +119,23 @@ public class panelBasta extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+
+        String ani, fof, pa, nom, col;
+		ronda r = new ronda();
+
+		ani = this.txtAnimal.getText(); 
+		fof = this.txtFF.getText();
+		pa = this.txtPais.getText();
+		nom = this.txtNombre.getText();
+		col = this.txtColor.getText();
+
+		r.setAnimal(ani);
+		r.setFlor_Fruto(fof);
+		r.setPais(pa);
+		r.setNombre(nom);
+		r.setColor(col);
+
+		System.out.println(r.getAnimal());
     }
 	
 }

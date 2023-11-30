@@ -8,6 +8,11 @@ public class ronda {
     private String Nombre;
     private String Color;
 
+    
+
+    public ronda() {
+    }
+
     public String getAnimal() {
         return animal;
     }
