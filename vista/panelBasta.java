@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,16 +24,20 @@ public class panelBasta extends JFrame implements ActionListener{
 		
 		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
 		JPanel panelPrincipal, panelTotal ,panelPalabras, panelEnviar;
-		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntos;
+		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntos, lblUsuario;
 		JButton btnEnviar;
 		
-		panelPrincipal = new JPanel(new GridLayout(3,1));
+		panelPrincipal = new JPanel(new GridLayout(4,1));
 		
 		panelPalabras = new JPanel(new GridLayout(5,4));
 		panelTotal = new JPanel(new GridLayout(1,4));
 		panelEnviar = new JPanel();
 		
-		
+		lblUsuario = new JLabel("Esta jugando: ");
+		lblUsuario.setHorizontalAlignment(JLabel.CENTER);
+		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 25); 
+        lblUsuario.setFont(boldFontTitulo);
+
 		lblAnimal = new JLabel("Animal: ");
 		lblFF = new JLabel("Flor o Fruto: ");
 		lblPais = new JLabel("Pais: ");
@@ -69,6 +74,8 @@ public class panelBasta extends JFrame implements ActionListener{
 		btnEnviar = new JButton("Enviar");
 		panelPrincipal.setBorder(new EmptyBorder(10,10,10,10));
 		panelTotal.setBorder(new EmptyBorder(20,20,20,20));
+
+		panelPrincipal.add(lblUsuario);
 		
 		panelPrincipal.add(panelPalabras);
 		
