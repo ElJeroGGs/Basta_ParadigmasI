@@ -12,14 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import modelo.ronda;
+import modelo.jugador;
 
-public class panelBasta extends JFrame implements ActionListener{
+public class JuegoBasta extends JFrame implements ActionListener{
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
 	
-	public panelBasta() {
+	public JuegoBasta() {
 		super("Basta!");
 		
 		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
@@ -127,7 +127,7 @@ public class panelBasta extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         String ani, fof, pa, nom, col;
-		ronda r = new ronda();
+		jugador r = new jugador();
 
 		ani = this.txtAnimal.getText(); 
 		fof = this.txtFF.getText();

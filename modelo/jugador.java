@@ -1,6 +1,6 @@
 package modelo;
 
-public class ronda {
+public class jugador {
 
     private String animal;
     private String Flor_Fruto;
@@ -8,7 +8,15 @@ public class ronda {
     private String Nombre;
     private String Color;
 
-    public ronda() {
+    public jugador() {
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String nombre) {
+        Nombre = nombre;
     }
 
     public String getAnimal() {
@@ -35,13 +43,7 @@ public class ronda {
         Pais = pais;
     }
 
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
+    
 
     public String getColor() {
         return Color;
