@@ -120,6 +120,7 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		this.getContentPane().add(panelPrincipal);
 		this.pack();
 		
+        setLocationRelativeTo(null);
 		
 	}
 

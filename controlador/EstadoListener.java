@@ -1,7 +1,7 @@
 package controlador;
 
 /**
- * Intefaz donde definimos los metodos a ejecutar despues de la llamada
+ * Interfaz donde definimos los metodos a ejecutar despues de la llamada
  * a la inscripcion.
  */
 

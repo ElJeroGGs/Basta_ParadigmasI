@@ -1,12 +1,18 @@
 package vista;
 import javax.swing.*;
+
+import controlador.ControlJuego;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Inicio extends JFrame implements ActionListener{
 
-    JTextField Usuario;
+    private  JTextField Usuario;
+
+    private ControlJuego ctrlJuego;
+
     public Inicio() {
         // Configurar la ventana
         setTitle("Bienvenido al juego Basta");
@@ -54,7 +60,12 @@ public class Inicio extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(Usuario.getText());
+
+        ctrlJuego.unirmeAPartida(Usuario.getText());
     
+    }
+
+    public void setControlador(ControlJuego ctrl) {
+        this.ctrlJuego = ctrl;
     }
 }
