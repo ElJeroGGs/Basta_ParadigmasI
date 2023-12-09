@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Random;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,11 +23,12 @@ public class server implements BastaServer {
 		return this.generaRespuestaEstado(this.estado);
 	}
 
-	@Override
-	public String getLetra() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getLetra() {
+    Random random = new Random();
+    char letra = (char) (random.nextInt(26) + 'a');
+    return String.valueOf(letra);
+}
 
 	@Override
 	public String postTirada(String usuario) {
