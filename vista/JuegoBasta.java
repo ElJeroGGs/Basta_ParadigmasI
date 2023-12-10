@@ -23,21 +23,23 @@ public class JuegoBasta extends JFrame implements ActionListener{
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
+	JTextField txtLetra;
+	JButton btnVerLetra;
 	JLabel lblUsuario;
 	ControlJuego ctrlJuego;
 	
 	public JuegoBasta() {
 		super("Basta!");
 		
-		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
+		JLabel lblTextoPts, lblvacia;
 		JPanel panelPrincipal, panelTotal ,panelPalabras, panelEnviar;
-		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntos;
+		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntosPartida;
 		JButton btnEnviar;
-		
-		panelPrincipal = new JPanel(new GridLayout(4,1));
+
+		panelPrincipal = new JPanel(new GridLayout(5,1));
 		
 		panelPalabras = new JPanel(new GridLayout(5,4));
-		panelTotal = new JPanel(new GridLayout(1,4));
+		panelTotal = new JPanel(new GridLayout(2,4));
 		panelEnviar = new JPanel();
 		
 		lblUsuario = new JLabel();
@@ -50,19 +52,12 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		lblPais = new JLabel("Pais: ");
 		lblNombre = new JLabel("Nombre: ");
 		lblColor = new JLabel("Color: ");
-		lblTotal = new JLabel("Total: ");
-		lblPuntos = new JLabel("Puntos: ");
+		lblTotal = new JLabel("Total Ronda: ");
+		lblPuntosPartida = new JLabel("Puntos de la Partida: ");
 		
-		lblTextoPts1 = new JLabel("pts");
-		lblTextoPts2 = new JLabel("pts");
-		lblTextoPts3 = new JLabel("pts");
-		lblTextoPts4 = new JLabel("pts");
-		lblTextoPts5 = new JLabel("pts");
-		lblTextoPts5 = new JLabel("pts");
-		lblTextoPts6 = new JLabel("pts");
+		lblTextoPts = new JLabel("pts");
 		
 		lblvacia = new JLabel(" ");
-		lblvacia2 = new JLabel(" ");
 		
 		txtAnimal = new JTextField();
 		txtFF = new JTextField();
@@ -70,69 +65,119 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		txtNombre = new JTextField();
 		txtColor = new JTextField();
 		
-		PtsAnimal = new JTextField();
-		ptsFF = new JTextField();
-		ptsPais = new JTextField();
-		ptsNombre = new JTextField();
-		ptsColor = new JTextField();
-		ptsTotal = new JTextField();
-		Puntos = new JTextField();
-		
+		PtsAnimal = new JTextField("0");
+		ptsFF = new JTextField("0");
+		ptsPais = new JTextField("0");
+		ptsNombre = new JTextField("0");
+		ptsColor = new JTextField("0");
+		ptsTotal = new JTextField("0");
+		this.Puntos = new JTextField("0");
+
+		//Centramos los textos de los puntos
+		PtsAnimal.setHorizontalAlignment(JTextField.CENTER);
+		ptsFF.setHorizontalAlignment(JTextField.CENTER);
+		ptsPais.setHorizontalAlignment(JTextField.CENTER);
+		ptsNombre.setHorizontalAlignment(JTextField.CENTER);
+		ptsColor.setHorizontalAlignment(JTextField.CENTER);
+		ptsTotal.setHorizontalAlignment(JTextField.CENTER);
+		this.Puntos.setHorizontalAlignment(JTextField.CENTER);
+
+		//Lo referente a la letra
+		txtLetra = new JTextField();
+		txtLetra.setHorizontalAlignment(JTextField.CENTER);
+		txtLetra.setEditable(false);
+		txtLetra.setFont(new Font(txtLetra.getFont().getFontName(), Font.BOLD, 25));
+
 		btnEnviar = new JButton("Enviar");
 		panelPrincipal.setBorder(new EmptyBorder(10,10,10,10));
 		panelTotal.setBorder(new EmptyBorder(20,20,20,20));
 
-		panelPrincipal.add(lblUsuario);
+
+		JPanel PanelLetra = new JPanel(new GridLayout(1,2));
+		PanelLetra.setBorder(new EmptyBorder(10,10,10,10));
+
 		
-		panelPrincipal.add(panelPalabras);
 		
+		
+			lblTextoPts = new JLabel("pts");
+
 			panelPalabras.add(lblAnimal); 
 			panelPalabras.add(txtAnimal);
 			panelPalabras.add(PtsAnimal);
-			panelPalabras.add(lblTextoPts1);
+			panelPalabras.add(lblTextoPts);
 			
+			lblTextoPts = new JLabel("pts");
+
 			panelPalabras.add(lblFF); 
 			panelPalabras.add(txtFF);
 			panelPalabras.add(ptsFF);
-			panelPalabras.add(lblTextoPts2);
-			
+			panelPalabras.add(lblTextoPts);
+
+			lblTextoPts = new JLabel("pts");
+
 			panelPalabras.add(lblPais);
 			panelPalabras.add(txtPais);
 			panelPalabras.add(ptsPais);
-			panelPalabras.add(lblTextoPts3);
-			
+			panelPalabras.add(lblTextoPts);
+
+			lblTextoPts = new JLabel("pts");
+
 			panelPalabras.add(lblNombre);
 			panelPalabras.add(txtNombre);
 			panelPalabras.add(ptsNombre);
-			panelPalabras.add(lblTextoPts4);
-			
+			panelPalabras.add(lblTextoPts);
+
+			lblTextoPts = new JLabel("pts");
+
 			panelPalabras.add(lblColor);
 			panelPalabras.add(txtColor);
 			panelPalabras.add(ptsColor);
-			panelPalabras.add(lblTextoPts5);
-		
-		panelPrincipal.add(panelTotal);
+			panelPalabras.add(lblTextoPts);
+
+			lblTextoPts = new JLabel("pts");
+
 			
 			panelTotal.add(lblvacia);
 			panelTotal.add(lblTotal);
 			panelTotal.add(ptsTotal);
-			panelTotal.add(lblTextoPts6);
+			panelTotal.add(lblTextoPts);
+			lblvacia = new JLabel(" ");
+			panelTotal.add(lblvacia);
+			panelTotal.add(lblPuntosPartida);
+			panelTotal.add(Puntos);
+			lblTextoPts = new JLabel("pts");
+			panelTotal.add(lblTextoPts);
 
-		
-		panelPrincipal.add(panelEnviar);
+			
 		
 			panelEnviar.add(btnEnviar);
             btnEnviar.addActionListener(this);
+			btnEnviar.setActionCommand("Enviar");
 
-			PtsAnimal.setEnabled(false);
-			ptsFF.setEnabled(false);
-			ptsPais.setEnabled(false);
-			ptsNombre.setEnabled(false);
-			ptsColor.setEnabled(false);
-			ptsTotal.setEnabled(false);
-			Puntos.setEnabled(false);
+			btnVerLetra = new JButton("Ver Letra");
+			btnVerLetra.addActionListener(this);
+			btnVerLetra.setActionCommand("VerLetra");
+
+			PanelLetra.add(btnVerLetra);
+			PanelLetra.add(txtLetra);
+
+			PtsAnimal.setEditable(false);
+			ptsFF.setEditable(false);
+			ptsPais.setEditable(false);
+			ptsNombre.setEditable(false);
+			ptsColor.setEditable(false);
+			ptsTotal.setEditable(false);
+			Puntos.setEditable(false);
+
+
+
+			panelPrincipal.add(lblUsuario);
+			panelPrincipal.add(PanelLetra);
+			panelPrincipal.add(panelPalabras);
+			panelPrincipal.add(panelTotal);
+			panelPrincipal.add(panelEnviar);
 			
-		this.getContentPane().add(panelPrincipal);
+		this.setContentPane(panelPrincipal);
 		this.pack();
 		
         setLocationRelativeTo(null);
@@ -146,13 +191,21 @@ public class JuegoBasta extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-		txtAnimal.setEnabled(false);
-		txtFF.setEnabled(false);
-		txtPais.setEnabled(false);
-		txtNombre.setEnabled(false);
-		txtColor.setEnabled(false);
+		String comando = e.getActionCommand();
 		
-		ctrlJuego.ResultadosRonda();
+		if(comando.equals("Enviar")){
+			txtAnimal.setText("");
+			txtFF.setText("");
+			txtPais.setText("");
+			txtNombre.setText("");
+			txtColor.setText("");
+			ctrlJuego.ResultadosRonda();
+		}
+		else if(comando.equals("VerLetra")){
+			String letra = ctrlJuego.verLetra();
+			this.txtLetra.setText(letra);
+		}
+		
     }
 
 	public void setControlador(ControlJuego ctrl) {
@@ -166,10 +219,19 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		r.setPais(this.txtPais.getText());
 		r.setNombre(this.txtNombre.getText());
 		r.setColor(this.txtColor.getText());
+		r.setTotalPartida(Integer.parseInt(this.Puntos.getText()));
 		return r;
 	}
 
 	public void setResultado(resultados data) {
+
+		this.PtsAnimal.setText(String.valueOf(data.getAnimal()));
+		this.ptsFF.setText(String.valueOf(data.getFlor_Fruto()));
+		this.ptsPais.setText(String.valueOf(data.getPais()));
+		this.ptsNombre.setText(String.valueOf(data.getNombre()));
+		this.ptsColor.setText(String.valueOf(data.getColor()));
+		this.ptsTotal.setText(String.valueOf(data.getTotalRonda()));
+		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
 	}
 }
 

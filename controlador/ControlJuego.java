@@ -88,11 +88,13 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener{
 		vJuego.setResultado(data);
 	}
 
+	@Override
+	public String verLetra() {
 
-	//Método para mandarle manualmente la información de la ronda al controlNet
-	public void Ronda(){
+		return ctrlComunicacion.verLetra();	}
 
-	}
+
+	
 
 	
 }

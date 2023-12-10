@@ -7,6 +7,7 @@ public class jugador {
     private String Pais;
     private String Nombre;
     private String Color;
+    private int TotalPartida;
 
     public jugador() {
     }
@@ -51,6 +52,14 @@ public class jugador {
     
     public void setColor(String color) {
         Color = color;
+    }
+
+    public int getTotalPartida() {
+        return TotalPartida;
+    }
+
+    public void setTotalPartida(int totalPartida) {
+        TotalPartida = totalPartida;
     }
 
 }

@@ -78,4 +78,9 @@ public class ControlNetFake implements ControlNet {
 		return resultados;
 	}
 
+	@Override
+	public String verLetra() {
+		return this.servidor.getLetra();
+	}
+
 }

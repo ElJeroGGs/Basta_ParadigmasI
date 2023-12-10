@@ -38,7 +38,14 @@ public class server implements BastaServer {
 	@Override
 	public String postTirada(String jugador) {
 
+		GsonBuilder builder = new GsonBuilder();
+		builder.setPrettyPrinting();
+		Gson gson = builder.create();
 		
+
+		jugador j = gson.fromJson(jugador, jugador.class);
+
+		int TotalPartida = j.getTotalPartida();
 		Random random = new Random();
 		int val1,val2,val3,val4,val5;
 		val1 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
@@ -46,15 +53,10 @@ public class server implements BastaServer {
 		val3 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
 		val4 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
 		val5 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
-		resultados r = new resultados(val1,val2,val3,val4,val5);
+		resultados r = new resultados(val1,val2,val3,val4,val5, TotalPartida);
 		
-		GsonBuilder builder;
-		Gson gson;
 		String respuestaJson;
-
-		builder = new GsonBuilder();
-		builder.setPrettyPrinting();
-		gson = builder.create();
+		
 		respuestaJson = gson.toJson(r);
 		
 		return respuestaJson;
