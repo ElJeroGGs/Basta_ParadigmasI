@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 
 import modelo.jugador;
 
@@ -148,7 +151,14 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		r.setNombre(nom);
 		r.setColor(col);
 
+		txtAnimal.setEnabled(false);
+		txtFF.setEnabled(false);
+		txtPais.setEnabled(false);
+		txtNombre.setEnabled(false);
+		txtColor.setEnabled(false);
+
 		System.out.println(r.getAnimal());
+
     }
 	
 }
