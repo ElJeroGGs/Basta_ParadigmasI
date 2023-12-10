@@ -192,21 +192,9 @@ public class JuegoBasta extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
 		String comando = e.getActionCommand();
-		
-		if(comando.equals("Enviar")){
-			txtAnimal.setText("");
-			txtFF.setText("");
-			txtPais.setText("");
-			txtNombre.setText("");
-			txtColor.setText("");
-			ctrlJuego.ResultadosRonda();
-		}
-		else if(comando.equals("VerLetra")){
-			String letra = ctrlJuego.verLetra();
-			this.txtLetra.setText(letra);
+		ctrlJuego.accion(comando);
 		}
 		
-    }
 
 	public void setControlador(ControlJuego ctrl) {
 		this.ctrlJuego = ctrl;
@@ -223,6 +211,20 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		return r;
 	}
 
+	public void Limpia(){
+		this.txtAnimal.setText("");
+		this.txtFF.setText("");
+		this.txtPais.setText("");
+		this.txtNombre.setText("");
+		this.txtColor.setText("");
+		this.txtLetra.setText("");
+		this.PtsAnimal.setText("0");
+		this.ptsFF.setText("0");
+		this.ptsPais.setText("0");
+		this.ptsNombre.setText("0");
+		this.ptsColor.setText("0");
+		this.ptsTotal.setText("0");
+	}
 	public void setResultado(resultados data) {
 
 		this.PtsAnimal.setText(String.valueOf(data.getAnimal()));
@@ -232,6 +234,12 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		this.ptsColor.setText(String.valueOf(data.getColor()));
 		this.ptsTotal.setText(String.valueOf(data.getTotalRonda()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
+
 	}
+
+    public void setLetra(String letra) {
+
+		this.txtLetra.setText(letra);
+    }
 }
 

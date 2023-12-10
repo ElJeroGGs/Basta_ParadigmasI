@@ -14,6 +14,22 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener{
 	private JuegoBasta vJuego;
 	private ControlNet ctrlComunicacion;
 	
+
+	public void accion(String comando){
+
+		switch(comando){
+			case "Enviar":
+				jugador j = vJuego.getJugador();
+				ctrlComunicacion.Califica(j);
+				ResultadosRonda();
+				break;
+			case "VerLetra":
+				String letra = verLetra();
+				vJuego.setLetra(letra);
+				break;
+
+		}
+	}
 	public ControlJuego() {
 		mListener = this;
 		estado = Estados.INICIAL;

@@ -8,4 +8,5 @@ public interface ControlJuegoInterfaz {
 	public void ResultadosRonda();
 	public String verLetra();
 	
+	
 }
