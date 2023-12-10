@@ -47,11 +47,13 @@ public class Inicio extends JFrame implements ActionListener{
         // Agregar el panel al contenido de la ventana
         getContentPane().add(panel);
 
-        // Mostrar la ventana
-        setVisible(true);
+       
 
         //Ponerle margen a la ventana
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Configurar el cierre de la ventana
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void main(String[] args) {
