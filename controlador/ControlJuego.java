@@ -40,7 +40,9 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener{
             public void run(){  
             	String edo;
                 // Registrame a la partida con el servidor
-            	edo = ctrlComunicacion.registra(jugador);  
+            	edo = ctrlComunicacion.registra(jugador); 
+				vJuego.setJugador(jugador);
+
                 //Preguntamos para ver cuando se llena la partida
                 while(edo.compareToIgnoreCase("LISTO")!=0) {
                 	edo = ctrlComunicacion.getEstado(); //Ya estas listo?

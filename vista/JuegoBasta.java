@@ -21,13 +21,14 @@ public class JuegoBasta extends JFrame implements ActionListener{
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
+	JLabel lblUsuario;
 	
 	public JuegoBasta() {
 		super("Basta!");
 		
 		JLabel lblTextoPts1, lblTextoPts2, lblTextoPts3, lblTextoPts4, lblTextoPts5, lblTextoPts6,lblvacia, lblvacia2;
 		JPanel panelPrincipal, panelTotal ,panelPalabras, panelEnviar;
-		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntos, lblUsuario;
+		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntos;
 		JButton btnEnviar;
 		
 		panelPrincipal = new JPanel(new GridLayout(4,1));
@@ -36,7 +37,7 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		panelTotal = new JPanel(new GridLayout(1,4));
 		panelEnviar = new JPanel();
 		
-		lblUsuario = new JLabel("Esta jugando: ");
+		lblUsuario = new JLabel();
 		lblUsuario.setHorizontalAlignment(JLabel.CENTER);
 		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 25); 
         lblUsuario.setFont(boldFontTitulo);
@@ -133,6 +134,11 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		
         setLocationRelativeTo(null);
 		
+	}
+
+	public void setJugador(String nombre){
+		this.lblUsuario.setText(nombre);
+
 	}
 
     @Override
