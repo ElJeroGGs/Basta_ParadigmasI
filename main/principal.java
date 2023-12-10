@@ -23,6 +23,7 @@ public class principal {
         ctrlJuego.setVInicial(inicial);
 
         inicial.setControlador(ctrlJuego);
+        basta.setControlador(ctrlJuego);
 
         ctrlJuego.inicia();
     }

@@ -15,13 +15,16 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.ColorUIResource;
 
+import controlador.ControlJuego;
 import modelo.jugador;
+import modelo.resultados;
 
 public class JuegoBasta extends JFrame implements ActionListener{
 	
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
 	JLabel lblUsuario;
+	ControlJuego ctrlJuego;
 	
 	public JuegoBasta() {
 		super("Basta!");
@@ -138,36 +141,35 @@ public class JuegoBasta extends JFrame implements ActionListener{
 
 	public void setJugador(String nombre){
 		this.lblUsuario.setText(nombre);
-
 	}
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        String ani, fof, pa, nom, col;
-		jugador r = new jugador();
-
-		ani = this.txtAnimal.getText(); 
-		fof = this.txtFF.getText();
-		pa = this.txtPais.getText();
-		nom = this.txtNombre.getText();
-		col = this.txtColor.getText();
-
-		r.setAnimal(ani);
-		r.setFlor_Fruto(fof);
-		r.setPais(pa);
-		r.setNombre(nom);
-		r.setColor(col);
 
 		txtAnimal.setEnabled(false);
 		txtFF.setEnabled(false);
 		txtPais.setEnabled(false);
 		txtNombre.setEnabled(false);
 		txtColor.setEnabled(false);
-
-		System.out.println(r.getAnimal());
-
+		
+		ctrlJuego.ResultadosRonda();
     }
+
+	public void setControlador(ControlJuego ctrl) {
+		this.ctrlJuego = ctrl;
+	}
 	
+	public jugador getJugador() {
+		jugador r = new jugador();
+		r.setAnimal(this.txtAnimal.getText());
+		r.setFlor_Fruto(this.txtFF.getText());
+		r.setPais(this.txtPais.getText());
+		r.setNombre(this.txtNombre.getText());
+		r.setColor(this.txtColor.getText());
+		return r;
+	}
+
+	public void setResultado(resultados data) {
+	}
 }
 

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 
 import modelo.BastaServer;
 import modelo.jugador;
+import modelo.resultados;
 import modelo.PartidaEstado;
 
 public class ControlNetFake implements ControlNet {
@@ -56,6 +57,25 @@ public class ControlNetFake implements ControlNet {
 		respuestaReg = gson.fromJson(respuestaJson, PartidaEstado.class);
 		
 		return respuestaReg.getEstado();
+	}
+
+	@Override
+	public resultados Califica(jugador j) {
+
+		GsonBuilder builder;
+		Gson gson;
+		String jugadorJson, respuestaJson;
+
+		//Crear la cadena Json para llamar al servidor
+		builder = new GsonBuilder();
+		builder.setPrettyPrinting();
+		gson = builder.create();
+		jugadorJson = gson.toJson(j);
+
+		respuestaJson = this.servidor.postTirada(jugadorJson);
+
+		resultados resultados = gson.fromJson(respuestaJson, resultados.class);
+		return resultados;
 	}
 
 }

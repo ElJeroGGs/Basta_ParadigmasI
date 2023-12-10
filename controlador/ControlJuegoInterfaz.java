@@ -1,9 +1,10 @@
 package controlador;
 
-import modelo.PartidaData;
+import modelo.resultados;
 
 public interface ControlJuegoInterfaz {
 	
 	public void unirmeAPartida(String json);
-	public PartidaData getDatos();
+	public void ResultadosRonda();
+	
 }

@@ -1,7 +1,8 @@
 package controlador;
 
 import modelo.Estados;
-import modelo.PartidaData;
+import modelo.jugador;
+import modelo.resultados;
 import vista.Inicio;
 import vista.JuegoBasta;
 
@@ -77,8 +78,21 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener{
 	}
 
 	@Override
-	public PartidaData getDatos() {
-		// TODO Auto-generated method stub
-		return null;
+	public void ResultadosRonda() {
+		resultados data;
+		jugador j = vJuego.getJugador(); 
+		data = ctrlComunicacion.Califica(j);
+
+		String prueba = data.toString();
+		System.out.println(prueba);
+		vJuego.setResultado(data);
 	}
+
+
+	//Método para mandarle manualmente la información de la ronda al controlNet
+	public void Ronda(){
+
+	}
+
+	
 }

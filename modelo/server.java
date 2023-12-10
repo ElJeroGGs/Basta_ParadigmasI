@@ -7,8 +7,11 @@ import com.google.gson.GsonBuilder;
 
 import modelo.jugador;
 import modelo.PartidaEstado;
+import modelo.Puntuaciones;
 
 public class server implements BastaServer {
+
+	
 	
 	private String estado;
 	private String jugadorNombre;
@@ -30,10 +33,31 @@ public class server implements BastaServer {
     return String.valueOf(letra);
 }
 
+	private static final int[] PUNTUACIONES = {Puntuaciones.CERO_REPETICIONES, Puntuaciones.UNA_REPETICIONES,Puntuaciones.DOS_REPETICIONES ,Puntuaciones.MUCHAS_REPETICIONES};
+
 	@Override
-	public String postTirada(String usuario) {
-		// TODO Auto-generated method stub
-		return null;
+	public String postTirada(String jugador) {
+
+		
+		Random random = new Random();
+		int val1,val2,val3,val4,val5;
+		val1 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
+		val2 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
+		val3 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
+		val4 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
+		val5 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
+		resultados r = new resultados(val1,val2,val3,val4,val5);
+		
+		GsonBuilder builder;
+		Gson gson;
+		String respuestaJson;
+
+		builder = new GsonBuilder();
+		builder.setPrettyPrinting();
+		gson = builder.create();
+		respuestaJson = gson.toJson(r);
+		
+		return respuestaJson;
 	}
 
 	@Override
