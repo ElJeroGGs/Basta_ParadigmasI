@@ -94,10 +94,7 @@ public class JuegoBasta extends JFrame implements ActionListener{
 
 
 		JPanel PanelLetra = new JPanel(new GridLayout(1,2));
-		PanelLetra.setBorder(new EmptyBorder(10,10,10,10));
-
-		
-		
+		PanelLetra.setBorder(new EmptyBorder(40,10,40,10));
 		
 			lblTextoPts = new JLabel("pts");
 
