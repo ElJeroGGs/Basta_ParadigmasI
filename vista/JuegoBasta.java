@@ -119,6 +119,14 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		
 			panelEnviar.add(btnEnviar);
             btnEnviar.addActionListener(this);
+
+			PtsAnimal.setEnabled(false);
+			ptsFF.setEnabled(false);
+			ptsPais.setEnabled(false);
+			ptsNombre.setEnabled(false);
+			ptsColor.setEnabled(false);
+			ptsTotal.setEnabled(false);
+			Puntos.setEnabled(false);
 			
 		this.getContentPane().add(panelPrincipal);
 		this.pack();
