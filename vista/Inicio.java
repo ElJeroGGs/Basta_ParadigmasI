@@ -45,6 +45,7 @@ public class Inicio extends JFrame implements ActionListener{
 
         // Crear el campo de texto para el usuario
         this.Usuario = new JTextField();
+        this.Usuario.setHorizontalAlignment(JTextField.CENTER);
         panel.add(this.Usuario);
 
         // Crear el botón "Jugar"

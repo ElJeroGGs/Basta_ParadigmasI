@@ -11,6 +11,7 @@ package controlador;
 import modelo.Estados;
 import modelo.jugador;
 import modelo.resultados;
+import vista.FinalPartida;
 import vista.Inicio;
 import vista.JuegoBasta;
 
@@ -21,14 +22,18 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 	private Inicio vInicial;
 	private JuegoBasta vJuego;
 	private ControlNet ctrlComunicacion;
-	public int contadorPartidas = 10;
+	private FinalPartida vFinalizacion;
+	private int ronda=-1;
 
 	public void accion(String comando) {
 
 		switch (comando) {
 			case "Enviar":
+				if(ronda==10){
+					termina();
+				}else{
 				ResultadosRonda();
-				decrementarContadorPartidas();
+				}
 				break;
 			case "VerLetra":
 				verLetra();
@@ -37,13 +42,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 		}
 	}
 
-	public int decrementarContadorPartidas() {
-        contadorPartidas--;
-        if (contadorPartidas == 0) {
-            // Si el contador llega a cero, cerrar la ventana
-        }
-		return contadorPartidas;
-    }
+	
 
 	public ControlJuego() {
 		mListener = this;
@@ -56,6 +55,12 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 
 	public void inicia() {
 		this.setEstado("INICIAL");
+	}
+
+	public void termina(){
+		this.vJuego.setVisible(false);
+		this.vFinalizacion.setPlayer(this.getResultadoFinal());
+		this.vFinalizacion.setVisible(true);
 	}
 
 	public void setVJuego(JuegoBasta v) {
@@ -81,6 +86,15 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				}
 				// Invoca la funcion callback de mi clase
 				mListener.setEstado(edo);
+
+				while(VerificaCronometro()!=0){
+					edo = ctrlComunicacion.getEstado();
+					//Esta instruccion es para que no se quede pegado en el while
+					//cuando el cronometro llega a 0
+					//Pero en realidad no sirve para nada
+					//NO BORRAR
+				}
+				accion("Enviar");
 			}
 		}).start();
 	}
@@ -105,6 +119,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				this.estado = Estados.LISTO;
 				this.vInicial.setVisible(false);
 				this.vJuego.setVisible(true);
+				this.vJuego.ReadyCronometro();
 				this.vJuego.SwitchBtnLetra("prende");
 				this.vJuego.SwitchBtnEnviar("prende");
 				this.vJuego.SwitchTexto("prende");
@@ -112,18 +127,12 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 			default:
 				break;
 		}
-
-		// Verificar si el contador llegó a cero y cerrar la ventana si es necesario
-        if (contadorPartidas == 0) {
-            vJuego.dispose();
-        }
 	}
 
 	@Override
 	public void ResultadosRonda() {
 		resultados data;
 		jugador j = vJuego.getJugador();
-		vJuego.Limpia();
 		data = ctrlComunicacion.Califica(j);
 		new Thread(new Runnable() {
 
@@ -135,7 +144,19 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 					edo = ctrlComunicacion.getEstado(); // Ya estas listo?
 				}
 				setEstado(edo);
+				vJuego.Limpia();
 				vJuego.setResultado(data);
+				ronda = data.getRonda();
+
+				while(VerificaCronometro()!=0){
+					edo = ctrlComunicacion.getEstado();
+					//Esta instruccion es para que no se quede pegado en el while
+					//cuando el cronometro llega a 0
+					//Pero en realidad no sirve para nada
+					//NO BORRAR
+				}
+				accion("Enviar");
+
 			}
 		}).start();
 
@@ -148,4 +169,16 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 		vJuego.SwitchBtnLetra("apaga");
 	}
 
+	public void setVFinalizacion(FinalPartida v){
+		this.vFinalizacion = v;
+	}
+
+	public jugador getResultadoFinal(){
+		jugador j = vJuego.getJugador();
+		return j;
+	}
+
+	public int VerificaCronometro(){
+		return vJuego.VerificaCronometro();
+	}
 }

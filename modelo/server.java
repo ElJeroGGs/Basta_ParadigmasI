@@ -24,7 +24,7 @@ public class server implements BastaServer {
 	private String estado;
 	private String jugadorNombre;
 	private String letra;
-
+	public int contadorRondas = 8;
 
 	public server() {
 		super();
@@ -43,7 +43,8 @@ public class server implements BastaServer {
 		this.letra = String.valueOf(letra);
 	}
 
-	private static final int[] PUNTUACIONES = {Puntuaciones.NO_VALIDO, Puntuaciones.CERO_REPETICIONES, Puntuaciones.UNA_REPETICIONES,
+	private static final int[] PUNTUACIONES = { Puntuaciones.NO_VALIDO, Puntuaciones.CERO_REPETICIONES,
+			Puntuaciones.UNA_REPETICIONES,
 			Puntuaciones.DOS_REPETICIONES, Puntuaciones.MUCHAS_REPETICIONES };
 
 	@Override
@@ -65,14 +66,16 @@ public class server implements BastaServer {
 		val5 = PUNTUACIONES[random.nextInt(PUNTUACIONES.length)];
 		resultados r = new resultados(val1, val2, val3, val4, val5, TotalPartida);
 
-
-		//Añadimos tiempo de espera
+		// Añadimos tiempo de espera
 		TiempoEspera();
 
-		//Generamos una nueva letra 
+		// Generamos una nueva letra
 		generarLetra();
 
-		
+		// Sumamos una ronda a la partida
+		r.setRonda(10 - this.contadorRondas);
+		// Restamos una ronda al contador
+		this.contadorRondas--;
 
 		String respuestaJson;
 		respuestaJson = gson.toJson(r);
@@ -90,12 +93,12 @@ public class server implements BastaServer {
 		jugador jugador = gson.fromJson(cadenaJson, jugador.class);
 
 		// Registra el jugador
-		this.jugadorNombre = jugador.getNombre();
-		//genera una nueva letra
+		this.jugadorNombre = jugador.getUsuario();
+		// genera una nueva letra
 		generarLetra();
-		//Colocamos el servidor en estado de carga durante un tiempo de
-		TiempoEspera();
-
+		// Colocamos el servidor en estado de carga durante un tiempo de 5 segundos
+		// TiempoEspera();
+		this.estado = ("LISTO");
 		// Regenera la respuesta
 		return this.generaRespuestaEstado("CARGANDO");
 	}
@@ -117,12 +120,12 @@ public class server implements BastaServer {
 		return cadenaJson;
 	}
 
-		//Simulamos un tiempo de espera de 5 segundos
-		public void TiempoEspera() {
+	// Simulamos un tiempo de espera de 3 segundos
+	public void TiempoEspera() {
 
-		//Colocamos el servidor en estado de carga
+		// Colocamos el servidor en estado de carga
 		estado = "CARGANDO";
-		//Tras 5 segundos cambiamos el estado a listo
+		// Tras 3 segundos cambiamos el estado a listo
 		Timer timer = new Timer();
 
 		timer.schedule(new TimerTask() {
@@ -130,7 +133,7 @@ public class server implements BastaServer {
 			public void run() {
 				estado = "LISTO";
 			}
-		}, 5000);
+		}, 3000);
 	}
 
 	public String getLetra() {
