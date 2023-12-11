@@ -13,12 +13,14 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 	private Inicio vInicial;
 	private JuegoBasta vJuego;
 	private ControlNet ctrlComunicacion;
+	public int contadorPartidas = 10;
 
 	public void accion(String comando) {
 
 		switch (comando) {
 			case "Enviar":
 				ResultadosRonda();
+				decrementarContadorPartidas();
 				break;
 			case "VerLetra":
 				verLetra();
@@ -26,6 +28,14 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 
 		}
 	}
+
+	public int decrementarContadorPartidas() {
+        contadorPartidas--;
+        if (contadorPartidas == 0) {
+            // Si el contador llega a cero, cerrar la ventana
+        }
+		return contadorPartidas;
+    }
 
 	public ControlJuego() {
 		mListener = this;
@@ -94,6 +104,11 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 			default:
 				break;
 		}
+
+		// Verificar si el contador llegó a cero y cerrar la ventana si es necesario
+        if (contadorPartidas == 0) {
+            vJuego.dispose();
+        }
 	}
 
 	@Override
