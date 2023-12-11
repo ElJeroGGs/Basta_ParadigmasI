@@ -2,11 +2,12 @@ package modelo;
 
 public class jugador {
 
-    private String animal;
+    private String Animal;
     private String Flor_Fruto;
     private String Pais;
     private String Nombre;
     private String Color;
+    private String Usuario;
     private int TotalPartida;
 
     public jugador() {
@@ -21,11 +22,11 @@ public class jugador {
     }
 
     public String getAnimal() {
-        return animal;
+        return Animal;
     }
 
     public void setAnimal(String animal) {
-        this.animal = animal;
+        this.Animal = animal;
     }
 
     public String getFlor_Fruto() {
@@ -44,7 +45,13 @@ public class jugador {
         Pais = pais;
     }
 
-    
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
+    }   
+
+    public String getUsuario() {
+        return Usuario;
+    }
 
     public String getColor() {
         return Color;

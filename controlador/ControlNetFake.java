@@ -43,7 +43,7 @@ public class ControlNetFake implements ControlNet {
 		PartidaEstado respuestaReg;
 		
 		j = new jugador();
-		j.setNombre(nombre);
+		j.setUsuario(nombre);
 		
 		//Crear la cadena Json para llamar al servidor
 		builder = new GsonBuilder();

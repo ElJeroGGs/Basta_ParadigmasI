@@ -88,7 +88,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		txtLetra.setEditable(false);
 		txtLetra.setFont(new Font(txtLetra.getFont().getFontName(), Font.BOLD, 25));
 
-		btnEnviar = new JButton("Enviar");
+		btnEnviar = new JButton("Basta!");
 		panelPrincipal.setBorder(new EmptyBorder(10, 10, 10, 10));
 		panelTotal.setBorder(new EmptyBorder(20, 20, 20, 20));
 
@@ -192,6 +192,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 
 	public jugador getJugador() {
 		jugador r = new jugador();
+		r.setUsuario(this.lblUsuario.getText());
 		r.setAnimal(this.txtAnimal.getText());
 		r.setFlor_Fruto(this.txtFF.getText());
 		r.setPais(this.txtPais.getText());

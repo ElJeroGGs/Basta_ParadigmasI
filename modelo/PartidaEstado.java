@@ -4,7 +4,6 @@ public class PartidaEstado {
 
     private String estado;
     private String jugador;
-    private resultados data;
 
 
     public void setEstado(String estado) {
@@ -23,13 +22,6 @@ public class PartidaEstado {
         return this.jugador;
     }
 
-    public resultados getData() {
-        return data;
-    }
-
-    public void setData(resultados data) {
-        this.data = data;
-    }
     
 
     

@@ -3,6 +3,7 @@ package main;
 import controlador.ControlJuego;
 import controlador.ControlNetFake;
 import modelo.server;
+import vista.FinalPartida;
 import vista.Inicio;
 import vista.JuegoBasta;
 
@@ -12,6 +13,7 @@ public class principal {
         server servidor = new server();
         ControlNetFake ctrlComunicacion = new ControlNetFake();
         ControlJuego ctrlJuego = new ControlJuego();
+
 
         JuegoBasta basta = new JuegoBasta();
         Inicio inicial = new Inicio();
@@ -26,5 +28,9 @@ public class principal {
         basta.setControlador(ctrlJuego);
 
         ctrlJuego.inicia();
+        
+        //Crea la ventana de finalizacion de partida y la asocia al controlador
+        FinalPartida FinPartida = new FinalPartida();
+        ctrlJuego.setVFinalizacion(FinPartida);
     }
 }

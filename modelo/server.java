@@ -82,7 +82,7 @@ public class server implements BastaServer {
 		jugador jugador = gson.fromJson(cadenaJson, jugador.class);
 
 		// Registra el jugador
-		this.jugadorNombre = jugador.getNombre();
+		this.jugadorNombre = jugador.getUsuario();
 		//genera una nueva letra
 		generarLetra();
 		//Colocamos el servidor en estado de carga durante un tiempo de

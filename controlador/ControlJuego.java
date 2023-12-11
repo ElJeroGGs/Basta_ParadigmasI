@@ -3,6 +3,7 @@ package controlador;
 import modelo.Estados;
 import modelo.jugador;
 import modelo.resultados;
+import vista.FinalPartida;
 import vista.Inicio;
 import vista.JuegoBasta;
 
@@ -13,6 +14,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 	private Inicio vInicial;
 	private JuegoBasta vJuego;
 	private ControlNet ctrlComunicacion;
+	private FinalPartida vFinalizacion;
 
 	public void accion(String comando) {
 
@@ -38,6 +40,12 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 
 	public void inicia() {
 		this.setEstado("INICIAL");
+	}
+
+	public void termina(){
+		this.setEstado("INICIAL");
+		this.vFinalizacion.setPlayer(this.getResultadoFinal());
+		this.vFinalizacion.setVisible(true);
 	}
 
 	public void setVJuego(JuegoBasta v) {
@@ -125,4 +133,13 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 		vJuego.SwitchBtnLetra("apaga");
 	}
 
+	public void setVFinalizacion(FinalPartida v){
+		this.vFinalizacion = v;
+	}
+
+	public jugador getResultadoFinal(){
+		resultados data;
+		jugador j = vJuego.getJugador();
+		return j;
+	}
 }
