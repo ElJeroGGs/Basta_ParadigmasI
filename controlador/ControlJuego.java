@@ -78,6 +78,15 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				}
 				// Invoca la funcion callback de mi clase
 				mListener.setEstado(edo);
+
+				while(VerificaCronometro()!=0){
+					edo = ctrlComunicacion.getEstado();
+					//Esta instruccion es para que no se quede pegado en el while
+					//cuando el cronometro llega a 0
+					//Pero en realidad no sirve para nada
+					//NO BORRAR
+				}
+				accion("Enviar");
 			}
 		}).start();
 	}
@@ -102,6 +111,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				this.estado = Estados.LISTO;
 				this.vInicial.setVisible(false);
 				this.vJuego.setVisible(true);
+				this.vJuego.ReadyCronometro();
 				this.vJuego.SwitchBtnLetra("prende");
 				this.vJuego.SwitchBtnEnviar("prende");
 				this.vJuego.SwitchTexto("prende");
@@ -115,7 +125,6 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 	public void ResultadosRonda() {
 		resultados data;
 		jugador j = vJuego.getJugador();
-		vJuego.Limpia();
 		data = ctrlComunicacion.Califica(j);
 		new Thread(new Runnable() {
 
@@ -127,8 +136,19 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 					edo = ctrlComunicacion.getEstado(); // Ya estas listo?
 				}
 				setEstado(edo);
+				vJuego.Limpia();
 				vJuego.setResultado(data);
 				ronda = data.getRonda();
+
+				while(VerificaCronometro()!=0){
+					edo = ctrlComunicacion.getEstado();
+					//Esta instruccion es para que no se quede pegado en el while
+					//cuando el cronometro llega a 0
+					//Pero en realidad no sirve para nada
+					//NO BORRAR
+				}
+				accion("Enviar");
+
 			}
 		}).start();
 
@@ -146,8 +166,11 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 	}
 
 	public jugador getResultadoFinal(){
-		resultados data;
 		jugador j = vJuego.getJugador();
 		return j;
+	}
+
+	public int VerificaCronometro(){
+		return vJuego.VerificaCronometro();
 	}
 }

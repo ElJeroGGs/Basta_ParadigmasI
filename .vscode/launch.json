@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CronometroTest",
+            "request": "launch",
+            "mainClass": "vista.CronometroTest",
+            "projectName": "Basta_ParadigmasI_f101ca3c"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

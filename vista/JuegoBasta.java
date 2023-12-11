@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -28,23 +29,25 @@ public class JuegoBasta extends JFrame implements ActionListener {
 	JLabel lblUsuario, lblTotal;
 	ControlJuego ctrlJuego;
 	JLabel lblContadorPartidas;
+	Cronometro cronometro;
 
 	public JuegoBasta() {
 		super("Basta!");
 
 		JLabel lblTextoPts, lblvacia;
-		JPanel panelPrincipal, panelTotal, panelPalabras, panelEnviar;
+		JPanel panelPrincipal, panelTotal, panelPalabras, panelEnviar, PanelUsuario;
 		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblPuntosPartida;
 
 		panelPrincipal = new JPanel(new GridLayout(5, 1));
-
+		PanelUsuario = new JPanel(new GridLayout(1, 2));
 		panelPalabras = new JPanel(new GridLayout(5, 4));
 		panelTotal = new JPanel(new GridLayout(2, 4));
 		panelEnviar = new JPanel();
 
 		lblUsuario = new JLabel();
 		lblUsuario.setHorizontalAlignment(JLabel.CENTER);
-		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 25);
+
+		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 30);
 		lblUsuario.setFont(boldFontTitulo);
 
 		lblAnimal = new JLabel("Animal: ");
@@ -65,13 +68,12 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		txtNombre = new JTextField();
 		txtColor = new JTextField();
 
-		//Centramos los textos
+		// Centramos los textos
 		txtAnimal.setHorizontalAlignment(JTextField.CENTER);
 		txtFF.setHorizontalAlignment(JTextField.CENTER);
 		txtPais.setHorizontalAlignment(JTextField.CENTER);
 		txtNombre.setHorizontalAlignment(JTextField.CENTER);
 		txtColor.setHorizontalAlignment(JTextField.CENTER);
-		
 
 		PtsAnimal = new JTextField("0");
 		ptsFF = new JTextField("0");
@@ -90,6 +92,11 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		ptsTotal.setHorizontalAlignment(JTextField.CENTER);
 		this.Puntos.setHorizontalAlignment(JTextField.CENTER);
 
+		// Agregamos componentes al panelUsuario
+
+		this.cronometro = new Cronometro(60);
+		PanelUsuario.add(lblUsuario);
+
 		// Lo referente a la letra
 		txtLetra = new JTextField();
 		txtLetra.setHorizontalAlignment(JTextField.CENTER);
@@ -101,10 +108,10 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		panelTotal.setBorder(new EmptyBorder(20, 20, 20, 20));
 
 		JPanel PanelLetra = new JPanel(new GridLayout(1, 2));
-		PanelLetra.setBorder(new EmptyBorder(40, 10, 40, 127));
+		PanelLetra.setBorder(new EmptyBorder(40, 10,50, 10));
 
 		lblContadorPartidas = new JLabel("Ronda 1/10");
-        PanelLetra.add(lblContadorPartidas);
+		PanelLetra.add(lblContadorPartidas);
 
 		lblTextoPts = new JLabel("pts");
 
@@ -164,6 +171,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 
 		PanelLetra.add(btnVerLetra);
 		PanelLetra.add(txtLetra);
+		PanelLetra.add(this.cronometro);
 
 		PtsAnimal.setEditable(false);
 		ptsFF.setEditable(false);
@@ -173,7 +181,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		ptsTotal.setEditable(false);
 		Puntos.setEditable(false);
 
-		panelPrincipal.add(lblUsuario);
+		panelPrincipal.add(PanelUsuario);
 		panelPrincipal.add(PanelLetra);
 		panelPrincipal.add(panelPalabras);
 		panelPrincipal.add(panelTotal);
@@ -183,7 +191,6 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		this.pack();
 
 		setLocationRelativeTo(null);
-
 	}
 
 	public void setJugador(String nombre) {
@@ -229,7 +236,6 @@ public class JuegoBasta extends JFrame implements ActionListener {
 
 		this.lblTotal.setText("Total Ronda Anterior: ");
 		this.btnVerLetra.setText("Ver Nueva Letra");
-
 		this.pack();
 	}
 
@@ -243,7 +249,8 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		this.ptsTotal.setText(String.valueOf(data.getTotalRonda()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
-		this.lblContadorPartidas.setText("Ronda "+String.valueOf(data.getRonda())+"/10");
+		this.lblContadorPartidas.setText("Ronda " + String.valueOf(data.getRonda()) + "/10");
+
 	}
 
 	public void setLetra(String letra) {
@@ -257,7 +264,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		} else if (comando.equals("apaga")) {
 			this.btnVerLetra.setEnabled(false);
 		}
-	
+
 	}
 
 	public void SwitchBtnEnviar(String comando) {
@@ -269,32 +276,40 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		}
 	}
 
-	public void SwitchTexto(String comando){
+	public void SwitchTexto(String comando) {
 
-	if (comando.equals("apaga")) {	
-		this.txtAnimal.setEditable(false);
-		this.txtFF.setEditable(false);
-		this.txtPais.setEditable(false);
-		this.txtNombre.setEditable(false);
-		this.txtColor.setEditable(false);
-		this.txtAnimal.setText("cargando puntuación...");
-		this.txtFF.setText("cargando puntuación...");
-		this.txtPais.setText("cargando puntuación...");
-		this.txtNombre.setText("cargando puntuación...");
-		this.txtColor.setText("cargando puntuación...");
+		if (comando.equals("apaga")) {
+			this.txtAnimal.setEditable(false);
+			this.txtFF.setEditable(false);
+			this.txtPais.setEditable(false);
+			this.txtNombre.setEditable(false);
+			this.txtColor.setEditable(false);
+			this.txtAnimal.setText("cargando puntuación...");
+			this.txtFF.setText("cargando puntuación...");
+			this.txtPais.setText("cargando puntuación...");
+			this.txtNombre.setText("cargando puntuación...");
+			this.txtColor.setText("cargando puntuación...");
+			this.cronometro.Stop();
 
-	}else if (comando.equals("prende")) {
-		Limpia();
-		this.txtAnimal.setEditable(true);
-		this.txtFF.setEditable(true);
-		this.txtPais.setEditable(true);
-		this.txtNombre.setEditable(true);
-		this.txtColor.setEditable(true);
+		} else if (comando.equals("prende")) {
+
+			this.txtAnimal.setEditable(true);
+			this.txtFF.setEditable(true);
+			this.txtPais.setEditable(true);
+			this.txtNombre.setEditable(true);
+			this.txtColor.setEditable(true);
+
+			this.cronometro.Reset(60);
+
+		}
 
 	}
 
-	
+	public void ReadyCronometro() {
+		this.cronometro.Start();
+	}
 
-}
-
+	public int VerificaCronometro() {
+		return this.cronometro.getTime();
+	}
 }
