@@ -27,7 +27,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 	JButton btnVerLetra, btnEnviar;
 	JLabel lblUsuario, lblTotal;
 	ControlJuego ctrlJuego;
-
+	JLabel lblContadorPartidas;
 
 	public JuegoBasta() {
 		super("Basta!");
@@ -94,6 +94,9 @@ public class JuegoBasta extends JFrame implements ActionListener {
 
 		JPanel PanelLetra = new JPanel(new GridLayout(1, 2));
 		PanelLetra.setBorder(new EmptyBorder(40, 10, 40, 10));
+
+		lblContadorPartidas = new JLabel("Partidas restantes: 10");
+        PanelLetra.add(lblContadorPartidas);
 
 		lblTextoPts = new JLabel("pts");
 
@@ -231,7 +234,8 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		this.ptsColor.setText(String.valueOf(data.getColor()));
 		this.ptsTotal.setText(String.valueOf(data.getTotalRonda()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
-
+		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
+		this.lblContadorPartidas.setText("Partidas restantes: " + ctrlJuego.contadorPartidas);
 	}
 
 	public void setLetra(String letra) {
@@ -280,6 +284,8 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		this.txtColor.setEditable(true);
 
 	}
+
+	
 
 }
 
