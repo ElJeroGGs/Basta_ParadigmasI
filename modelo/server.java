@@ -16,6 +16,7 @@ public class server implements BastaServer {
 	private String estado;
 	private String jugadorNombre;
 	private String letra;
+	public int contadorRondas = 8;
 
 
 	public server() {
@@ -59,10 +60,15 @@ public class server implements BastaServer {
 
 
 		//Añadimos tiempo de espera
-		TiempoEspera();
+		//TiempoEspera();
 
 		//Generamos una nueva letra 
 		generarLetra();
+
+		//Sumamos una ronda a la partida
+		r.setRonda(10-this.contadorRondas);
+		//Restamos una ronda al contador
+		this.contadorRondas--;
 
 		
 
@@ -85,9 +91,9 @@ public class server implements BastaServer {
 		this.jugadorNombre = jugador.getUsuario();
 		//genera una nueva letra
 		generarLetra();
-		//Colocamos el servidor en estado de carga durante un tiempo de
-		TiempoEspera();
-
+		//Colocamos el servidor en estado de carga durante un tiempo de 5 segundos
+		//TiempoEspera();
+		this.estado = ("LISTO");
 		// Regenera la respuesta
 		return this.generaRespuestaEstado("CARGANDO");
 	}

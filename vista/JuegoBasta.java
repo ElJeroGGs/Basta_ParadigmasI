@@ -65,6 +65,14 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		txtNombre = new JTextField();
 		txtColor = new JTextField();
 
+		//Centramos los textos
+		txtAnimal.setHorizontalAlignment(JTextField.CENTER);
+		txtFF.setHorizontalAlignment(JTextField.CENTER);
+		txtPais.setHorizontalAlignment(JTextField.CENTER);
+		txtNombre.setHorizontalAlignment(JTextField.CENTER);
+		txtColor.setHorizontalAlignment(JTextField.CENTER);
+		
+
 		PtsAnimal = new JTextField("0");
 		ptsFF = new JTextField("0");
 		ptsPais = new JTextField("0");
@@ -93,9 +101,9 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		panelTotal.setBorder(new EmptyBorder(20, 20, 20, 20));
 
 		JPanel PanelLetra = new JPanel(new GridLayout(1, 2));
-		PanelLetra.setBorder(new EmptyBorder(40, 10, 40, 10));
+		PanelLetra.setBorder(new EmptyBorder(40, 10, 40, 127));
 
-		lblContadorPartidas = new JLabel("Partidas restantes: 10");
+		lblContadorPartidas = new JLabel("Ronda 1/10");
         PanelLetra.add(lblContadorPartidas);
 
 		lblTextoPts = new JLabel("pts");
@@ -235,7 +243,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 		this.ptsTotal.setText(String.valueOf(data.getTotalRonda()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
 		this.Puntos.setText(String.valueOf(data.getTotalPartida()));
-		this.lblContadorPartidas.setText("Partidas restantes: " + ctrlJuego.contadorPartidas);
+		this.lblContadorPartidas.setText("Ronda "+String.valueOf(data.getRonda())+"/10");
 	}
 
 	public void setLetra(String letra) {

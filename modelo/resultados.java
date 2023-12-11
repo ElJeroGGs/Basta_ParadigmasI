@@ -8,7 +8,8 @@ private int Pais;
 private int Color;
 private int Nombre;
 private int TotalRonda;
-private int TotalPartida ;
+private int TotalPartida;
+private int NumeroRonda;
 
 public resultados(int Flor_Fruto, int Animal, int Pais, int Color, int Nombre, int TotalPartida){
 this.Animal = Animal;
@@ -50,4 +51,12 @@ public int getTotalPartida(){
 return TotalPartida;
 }
 
+public int getRonda() {
+    return this.NumeroRonda;
+}
+
+public void setRonda(int ronda) {
+    this.NumeroRonda = ronda;
+
+}
 }

@@ -52,6 +52,8 @@ public class FinalPartida extends JFrame {
         this.setLocationRelativeTo(null);
         this.pack();
 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     public void setPlayer(jugador player) {
