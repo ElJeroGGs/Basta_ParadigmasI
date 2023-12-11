@@ -13,6 +13,7 @@ Este proyecto ha sido elaborado por Alvarez Macedo Efren, Mercado Hernández Jos
 **Manejo de Eventos:** Se han implementado mecanismos para gestionar eventos del juego, como el ingreso de respuestas y el control del tiempo de juego.
 
 **Instrucciones para Ejecutar el Proyecto:**
+
 1.- Clonar este repositorio en el entorno local, ademas necesitas implementar la libreria de Gson en su version 10.1 para poder compilar y ejecutar este proyecto.
 
 2.- Compilar y ejecutar el código fuente en un entorno de desarrollo Java compatible.
