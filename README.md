@@ -14,8 +14,11 @@ Este proyecto ha sido elaborado por Alvarez Macedo Efren, Mercado Hernández Jos
 
 **Instrucciones para Ejecutar el Proyecto:**
 1.- Clonar este repositorio en el entorno local, ademas necesitas implementar la libreria de Gson en su version 10.1 para poder compilar y ejecutar este proyecto.
+
 2.- Compilar y ejecutar el código fuente en un entorno de desarrollo Java compatible.
+
 3.- Configurar y ejecutar el servidor para permitir la comunicación entre diferentes clientes.
+
 4.- Disfrutar del juego Basta con amigos en modo multijugador.
 
 **Este proyecto no solo cumple con los requisitos académicos de la materia de Paradigmas de Programación I, sino que también sirve como un ejemplo práctico de implementación de conceptos clave, como interfaces gráficas, serialización de datos y comunicación cliente-servidor en el contexto del desarrollo de software en Java.**
