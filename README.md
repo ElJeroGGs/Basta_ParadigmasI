@@ -2,7 +2,7 @@
 
 Este proyecto ha sido elaborado por Alvarez Macedo Efren, Mercado Hernández José Eduardo, Espinoza Castañeda Yonathan y Espinosa Santana Angel David. Contiene el código fuente y los recursos asociados a un proyecto desarrollado como parte de la materia de Paradigmas de Programación I. El enfoque central del proyecto es la implementación del reconocido juego de mesa "Basta" mediante el uso del lenguaje de programación Java, aprovechando la interfaz gráfica proporcionada por JFrame.
 
-##Características Principales:
+Características Principales:
 
 Interfaz Gráfica con JFrame: El juego ofrece una interfaz amigable desarrollada con la biblioteca Swing y JFrame de Java, proporcionando una experiencia visual atractiva e intuitiva para los usuarios.
 
