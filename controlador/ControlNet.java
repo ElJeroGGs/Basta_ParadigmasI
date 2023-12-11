@@ -9,5 +9,4 @@ public interface ControlNet {
 	public void setServidor(BastaServer serv);
     public resultados Califica(jugador j);
 	public String verLetra();
-
 }

@@ -28,6 +28,7 @@ public class JuegoBasta extends JFrame implements ActionListener {
 	JLabel lblUsuario, lblTotal;
 	ControlJuego ctrlJuego;
 
+
 	public JuegoBasta() {
 		super("Basta!");
 
@@ -254,4 +255,31 @@ public class JuegoBasta extends JFrame implements ActionListener {
 			this.btnEnviar.setEnabled(false);
 		}
 	}
+
+	public void SwitchTexto(String comando){
+
+	if (comando.equals("apaga")) {	
+		this.txtAnimal.setEditable(false);
+		this.txtFF.setEditable(false);
+		this.txtPais.setEditable(false);
+		this.txtNombre.setEditable(false);
+		this.txtColor.setEditable(false);
+		this.txtAnimal.setText("cargando puntuación...");
+		this.txtFF.setText("cargando puntuación...");
+		this.txtPais.setText("cargando puntuación...");
+		this.txtNombre.setText("cargando puntuación...");
+		this.txtColor.setText("cargando puntuación...");
+
+	}else if (comando.equals("prende")) {
+		Limpia();
+		this.txtAnimal.setEditable(true);
+		this.txtFF.setEditable(true);
+		this.txtPais.setEditable(true);
+		this.txtNombre.setEditable(true);
+		this.txtColor.setEditable(true);
+
+	}
+
+}
+
 }

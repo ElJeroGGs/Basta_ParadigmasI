@@ -81,6 +81,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				this.vInicial.setVisible(false);
 				this.vJuego.SwitchBtnLetra("apaga");
 				this.vJuego.SwitchBtnEnviar("apaga");
+				this.vJuego.SwitchTexto("apaga");
 				break;
 			case "LISTO":
 				this.estado = Estados.LISTO;
@@ -88,6 +89,7 @@ public class ControlJuego implements ControlJuegoInterfaz, EstadoListener {
 				this.vJuego.setVisible(true);
 				this.vJuego.SwitchBtnLetra("prende");
 				this.vJuego.SwitchBtnEnviar("prende");
+				this.vJuego.SwitchTexto("prende");
 				break;
 			default:
 				break;

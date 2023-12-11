@@ -64,6 +64,8 @@ public class server implements BastaServer {
 		//Generamos una nueva letra 
 		generarLetra();
 
+		
+
 		String respuestaJson;
 		respuestaJson = gson.toJson(r);
 
@@ -83,8 +85,9 @@ public class server implements BastaServer {
 		this.jugadorNombre = jugador.getNombre();
 		//genera una nueva letra
 		generarLetra();
-		// Cambia el estado
-		this.estado = "LISTO"; // Simulamos que ya se conectaron todos
+		//Colocamos el servidor en estado de carga durante un tiempo de
+		TiempoEspera();
+
 		// Regenera la respuesta
 		return this.generaRespuestaEstado("CARGANDO");
 	}
