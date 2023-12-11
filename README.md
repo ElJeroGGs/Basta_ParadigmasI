@@ -23,4 +23,3 @@ Este proyecto ha sido elaborado por Alvarez Macedo Efren, Mercado Hernández Jos
 
 4.- Disfrutar del juego Basta con amigos en modo multijugador.
 
-**Este proyecto no solo cumple con los requisitos académicos de la materia de Paradigmas de Programación I, sino que también sirve como un ejemplo práctico de implementación de conceptos clave, como interfaces gráficas, serialización de datos y comunicación cliente-servidor en el contexto del desarrollo de software en Java.**
