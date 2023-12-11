@@ -6,4 +6,5 @@ public interface BastaServer {
 	public String getLetra();
 	public String postTirada(String usuario);
 	public String registra(String j);	
+	public void generarLetra();
 }

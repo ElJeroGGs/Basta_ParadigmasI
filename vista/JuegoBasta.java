@@ -19,33 +19,32 @@ import controlador.ControlJuego;
 import modelo.jugador;
 import modelo.resultados;
 
-public class JuegoBasta extends JFrame implements ActionListener{
-	
+public class JuegoBasta extends JFrame implements ActionListener {
+
 	JTextField txtAnimal, txtFF, txtPais, txtNombre, txtColor;
 	JTextField PtsAnimal, ptsFF, ptsPais, ptsNombre, ptsColor, ptsTotal, Puntos;
 	JTextField txtLetra;
-	JButton btnVerLetra;
-	JLabel lblUsuario;
+	JButton btnVerLetra, btnEnviar;
+	JLabel lblUsuario, lblTotal;
 	ControlJuego ctrlJuego;
-	
+
 	public JuegoBasta() {
 		super("Basta!");
-		
-		JLabel lblTextoPts, lblvacia;
-		JPanel panelPrincipal, panelTotal ,panelPalabras, panelEnviar;
-		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblTotal, lblPuntosPartida;
-		JButton btnEnviar;
 
-		panelPrincipal = new JPanel(new GridLayout(5,1));
-		
-		panelPalabras = new JPanel(new GridLayout(5,4));
-		panelTotal = new JPanel(new GridLayout(2,4));
+		JLabel lblTextoPts, lblvacia;
+		JPanel panelPrincipal, panelTotal, panelPalabras, panelEnviar;
+		JLabel lblAnimal, lblFF, lblPais, lblNombre, lblColor, lblPuntosPartida;
+
+		panelPrincipal = new JPanel(new GridLayout(5, 1));
+
+		panelPalabras = new JPanel(new GridLayout(5, 4));
+		panelTotal = new JPanel(new GridLayout(2, 4));
 		panelEnviar = new JPanel();
-		
+
 		lblUsuario = new JLabel();
 		lblUsuario.setHorizontalAlignment(JLabel.CENTER);
-		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 25); 
-        lblUsuario.setFont(boldFontTitulo);
+		Font boldFontTitulo = new Font(lblUsuario.getFont().getFontName(), Font.BOLD, 25);
+		lblUsuario.setFont(boldFontTitulo);
 
 		lblAnimal = new JLabel("Animal: ");
 		lblFF = new JLabel("Flor o Fruto: ");
@@ -54,17 +53,17 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		lblColor = new JLabel("Color: ");
 		lblTotal = new JLabel("Total Ronda: ");
 		lblPuntosPartida = new JLabel("Puntos de la Partida: ");
-		
+
 		lblTextoPts = new JLabel("pts");
-		
+
 		lblvacia = new JLabel(" ");
-		
+
 		txtAnimal = new JTextField();
 		txtFF = new JTextField();
 		txtPais = new JTextField();
 		txtNombre = new JTextField();
 		txtColor = new JTextField();
-		
+
 		PtsAnimal = new JTextField("0");
 		ptsFF = new JTextField("0");
 		ptsPais = new JTextField("0");
@@ -73,7 +72,7 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		ptsTotal = new JTextField("0");
 		this.Puntos = new JTextField("0");
 
-		//Centramos los textos de los puntos
+		// Centramos los textos de los puntos
 		PtsAnimal.setHorizontalAlignment(JTextField.CENTER);
 		ptsFF.setHorizontalAlignment(JTextField.CENTER);
 		ptsPais.setHorizontalAlignment(JTextField.CENTER);
@@ -82,121 +81,114 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		ptsTotal.setHorizontalAlignment(JTextField.CENTER);
 		this.Puntos.setHorizontalAlignment(JTextField.CENTER);
 
-		//Lo referente a la letra
+		// Lo referente a la letra
 		txtLetra = new JTextField();
 		txtLetra.setHorizontalAlignment(JTextField.CENTER);
 		txtLetra.setEditable(false);
 		txtLetra.setFont(new Font(txtLetra.getFont().getFontName(), Font.BOLD, 25));
 
 		btnEnviar = new JButton("Enviar");
-		panelPrincipal.setBorder(new EmptyBorder(10,10,10,10));
-		panelTotal.setBorder(new EmptyBorder(20,20,20,20));
+		panelPrincipal.setBorder(new EmptyBorder(10, 10, 10, 10));
+		panelTotal.setBorder(new EmptyBorder(20, 20, 20, 20));
 
+		JPanel PanelLetra = new JPanel(new GridLayout(1, 2));
+		PanelLetra.setBorder(new EmptyBorder(40, 10, 40, 10));
 
-		JPanel PanelLetra = new JPanel(new GridLayout(1,2));
-		PanelLetra.setBorder(new EmptyBorder(40,10,40,10));
-		
-			lblTextoPts = new JLabel("pts");
+		lblTextoPts = new JLabel("pts");
 
-			panelPalabras.add(lblAnimal); 
-			panelPalabras.add(txtAnimal);
-			panelPalabras.add(PtsAnimal);
-			panelPalabras.add(lblTextoPts);
-			
-			lblTextoPts = new JLabel("pts");
+		panelPalabras.add(lblAnimal);
+		panelPalabras.add(txtAnimal);
+		panelPalabras.add(PtsAnimal);
+		panelPalabras.add(lblTextoPts);
 
-			panelPalabras.add(lblFF); 
-			panelPalabras.add(txtFF);
-			panelPalabras.add(ptsFF);
-			panelPalabras.add(lblTextoPts);
+		lblTextoPts = new JLabel("pts");
 
-			lblTextoPts = new JLabel("pts");
+		panelPalabras.add(lblFF);
+		panelPalabras.add(txtFF);
+		panelPalabras.add(ptsFF);
+		panelPalabras.add(lblTextoPts);
 
-			panelPalabras.add(lblPais);
-			panelPalabras.add(txtPais);
-			panelPalabras.add(ptsPais);
-			panelPalabras.add(lblTextoPts);
+		lblTextoPts = new JLabel("pts");
 
-			lblTextoPts = new JLabel("pts");
+		panelPalabras.add(lblPais);
+		panelPalabras.add(txtPais);
+		panelPalabras.add(ptsPais);
+		panelPalabras.add(lblTextoPts);
 
-			panelPalabras.add(lblNombre);
-			panelPalabras.add(txtNombre);
-			panelPalabras.add(ptsNombre);
-			panelPalabras.add(lblTextoPts);
+		lblTextoPts = new JLabel("pts");
 
-			lblTextoPts = new JLabel("pts");
+		panelPalabras.add(lblNombre);
+		panelPalabras.add(txtNombre);
+		panelPalabras.add(ptsNombre);
+		panelPalabras.add(lblTextoPts);
 
-			panelPalabras.add(lblColor);
-			panelPalabras.add(txtColor);
-			panelPalabras.add(ptsColor);
-			panelPalabras.add(lblTextoPts);
+		lblTextoPts = new JLabel("pts");
 
-			lblTextoPts = new JLabel("pts");
+		panelPalabras.add(lblColor);
+		panelPalabras.add(txtColor);
+		panelPalabras.add(ptsColor);
+		panelPalabras.add(lblTextoPts);
 
-			
-			panelTotal.add(lblvacia);
-			panelTotal.add(lblTotal);
-			panelTotal.add(ptsTotal);
-			panelTotal.add(lblTextoPts);
-			lblvacia = new JLabel(" ");
-			panelTotal.add(lblvacia);
-			panelTotal.add(lblPuntosPartida);
-			panelTotal.add(Puntos);
-			lblTextoPts = new JLabel("pts");
-			panelTotal.add(lblTextoPts);
+		lblTextoPts = new JLabel("pts");
 
-			
-		
-			panelEnviar.add(btnEnviar);
-            btnEnviar.addActionListener(this);
-			btnEnviar.setActionCommand("Enviar");
+		panelTotal.add(lblvacia);
+		panelTotal.add(lblTotal);
+		panelTotal.add(ptsTotal);
+		panelTotal.add(lblTextoPts);
+		lblvacia = new JLabel(" ");
+		panelTotal.add(lblvacia);
+		panelTotal.add(lblPuntosPartida);
+		panelTotal.add(Puntos);
+		lblTextoPts = new JLabel("pts");
+		panelTotal.add(lblTextoPts);
 
-			btnVerLetra = new JButton("Ver Letra");
-			btnVerLetra.addActionListener(this);
-			btnVerLetra.setActionCommand("VerLetra");
+		panelEnviar.add(btnEnviar);
+		btnEnviar.addActionListener(this);
+		btnEnviar.setActionCommand("Enviar");
 
-			PanelLetra.add(btnVerLetra);
-			PanelLetra.add(txtLetra);
+		btnVerLetra = new JButton("Ver Letra");
+		btnVerLetra.addActionListener(this);
+		btnVerLetra.setActionCommand("VerLetra");
 
-			PtsAnimal.setEditable(false);
-			ptsFF.setEditable(false);
-			ptsPais.setEditable(false);
-			ptsNombre.setEditable(false);
-			ptsColor.setEditable(false);
-			ptsTotal.setEditable(false);
-			Puntos.setEditable(false);
+		PanelLetra.add(btnVerLetra);
+		PanelLetra.add(txtLetra);
 
+		PtsAnimal.setEditable(false);
+		ptsFF.setEditable(false);
+		ptsPais.setEditable(false);
+		ptsNombre.setEditable(false);
+		ptsColor.setEditable(false);
+		ptsTotal.setEditable(false);
+		Puntos.setEditable(false);
 
+		panelPrincipal.add(lblUsuario);
+		panelPrincipal.add(PanelLetra);
+		panelPrincipal.add(panelPalabras);
+		panelPrincipal.add(panelTotal);
+		panelPrincipal.add(panelEnviar);
 
-			panelPrincipal.add(lblUsuario);
-			panelPrincipal.add(PanelLetra);
-			panelPrincipal.add(panelPalabras);
-			panelPrincipal.add(panelTotal);
-			panelPrincipal.add(panelEnviar);
-			
 		this.setContentPane(panelPrincipal);
 		this.pack();
-		
-        setLocationRelativeTo(null);
-		
+
+		setLocationRelativeTo(null);
+
 	}
 
-	public void setJugador(String nombre){
+	public void setJugador(String nombre) {
 		this.lblUsuario.setText(nombre);
 	}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+	@Override
+	public void actionPerformed(ActionEvent e) {
 
 		String comando = e.getActionCommand();
 		ctrlJuego.accion(comando);
-		}
-		
+	}
 
 	public void setControlador(ControlJuego ctrl) {
 		this.ctrlJuego = ctrl;
 	}
-	
+
 	public jugador getJugador() {
 		jugador r = new jugador();
 		r.setAnimal(this.txtAnimal.getText());
@@ -208,7 +200,7 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		return r;
 	}
 
-	public void Limpia(){
+	public void Limpia() {
 		this.txtAnimal.setText("");
 		this.txtFF.setText("");
 		this.txtPais.setText("");
@@ -221,7 +213,13 @@ public class JuegoBasta extends JFrame implements ActionListener{
 		this.ptsNombre.setText("0");
 		this.ptsColor.setText("0");
 		this.ptsTotal.setText("0");
+
+		this.lblTotal.setText("Total Ronda Anterior: ");
+		this.btnVerLetra.setText("Ver Nueva Letra");
+
+		this.pack();
 	}
+
 	public void setResultado(resultados data) {
 
 		this.PtsAnimal.setText(String.valueOf(data.getAnimal()));
@@ -234,9 +232,26 @@ public class JuegoBasta extends JFrame implements ActionListener{
 
 	}
 
-    public void setLetra(String letra) {
-
+	public void setLetra(String letra) {
 		this.txtLetra.setText(letra);
-    }
-}
+	}
 
+	public void SwitchBtnLetra(String comando) {
+
+		if (comando.equals("prende")) {
+			this.btnVerLetra.setEnabled(true);
+		} else if (comando.equals("apaga")) {
+			this.btnVerLetra.setEnabled(false);
+		}
+	
+	}
+
+	public void SwitchBtnEnviar(String comando) {
+
+		if (comando.equals("prende")) {
+			this.btnEnviar.setEnabled(true);
+		} else if (comando.equals("apaga")) {
+			this.btnEnviar.setEnabled(false);
+		}
+	}
+}
