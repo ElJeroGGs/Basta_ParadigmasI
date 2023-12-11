@@ -1,3 +1,11 @@
+/*
+INTEGRANTES
+*
+Alvarez Macedo Efren
+Mercado Hernández José Eduardo
+Espinoza Castañeda Yonathan
+Espinosa Santana Angel David
+*/
 package modelo;
 
 public class Puntuaciones {
